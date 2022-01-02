@@ -9,6 +9,8 @@ import (
 	"github.com/pelletier/go-toml"
 	"io/ioutil"
 	"log"
+	"net/http"
+	_ "net/http/pprof"
 	"strconv"
 	"strings"
 	"time"
@@ -1031,7 +1033,7 @@ func (zsrr *ZScoreRangeRouter) Handle(req kiface.IRequest) {
 				b.WriteString("\n")
 			}
 			// write score
-			b.WriteString(strconv.Itoa(i+1))
+			b.WriteString(strconv.Itoa(i + 1))
 			b.WriteString(") ")
 			b.WriteString(fmt.Sprintf("%f", res[i+1].(float64)))
 			if i < len(res)-2 {
@@ -1125,7 +1127,7 @@ func (ztr *ZTopRouter) Handle(req kiface.IRequest) {
 				b.WriteString("\n")
 			}
 			// write score
-			b.WriteString(strconv.Itoa(i+1))
+			b.WriteString(strconv.Itoa(i + 1))
 			b.WriteString(") ")
 			b.WriteString(fmt.Sprintf("%f", res[i+1].(float64)))
 			if i < len(res)-2 {
@@ -1146,6 +1148,12 @@ func init() {
 }
 
 func main() {
+
+	// pprof
+	go func() {
+		log.Println(http.ListenAndServe("localhost:6060", nil))
+	}()
+
 	defer func() {
 		if r := recover(); r != nil {
 			log.Printf("server panic: %+v", r)
