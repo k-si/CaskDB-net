@@ -1,0 +1,44 @@
+# net
+
+# ip version
+ip_version = "tcp4"
+
+# server address
+host = "127.0.0.1"
+
+# server port
+port = 4519
+
+max_conn_size = 10
+
+# 1MB
+max_package_size = 1048576
+
+# must be 1
+work_pool_size = 1
+
+# maximum number of tasks that can be buffered per worker
+max_worker_task = 100
+
+# highest level of connection expiration
+heart_fresh_level = 5
+
+# heart beat pakage id
+heart_package_id = 100
+
+# db
+
+# dir of db files
+db_dir = "/tmp/caskdb"
+
+# 1 * 1024 * 1024 = 1MB
+max_key_size = 1048576
+
+# 4 * 1024 * 1024 = 4MB
+max_val_size = 4194304
+
+# 16 * 1024 * 1024 = 16MB
+max_file_size = 16777216
+
+# synchronize immediately after writing
+sync_now = false
