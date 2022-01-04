@@ -19,7 +19,7 @@ import (
 const (
 	// net
 	DefaultIPVersion         = "tcp4"
-	DefaultHost              = "127.0.0.1"
+	DefaultHost              = "0.0.0.0"
 	DefaultPort              = 4519
 	DefaultMaxConnSize       = 1
 	DefaultMaxPackageSize    = 1024 * 1024 // 1mb

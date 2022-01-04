@@ -4,7 +4,7 @@
 ip_version = "tcp4"
 
 # server address
-host = "0.0.0.1"
+host = "0.0.0.0"
 
 # server port
 port = 4519
