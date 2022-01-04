@@ -74,11 +74,11 @@ type Message struct {
 }
 
 func main() {
-	h := flag.String("host", "127.0.0.1", "tcp server address")
-	p := flag.Int("port", 4519, "tcp server port")
+	h := flag.String("h", "0.0.0.0", "tcp server address")
+	p := flag.Int("p", 4519, "tcp server port")
 	flag.Parse()
 	if *h == "" {
-		*h = "127.0.0.1"
+		*h = "0.0.0.0"
 	}
 	if *p == 0 {
 		*p = 4519

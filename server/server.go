@@ -1151,7 +1151,7 @@ func main() {
 
 	// pprof
 	go func() {
-		log.Println(http.ListenAndServe("localhost:6060", nil))
+		log.Println(http.ListenAndServe("0.0.0.0:6060", nil))
 	}()
 
 	defer func() {
@@ -1234,6 +1234,7 @@ func main() {
 }
 
 func NewServer(cfg ServerConfig) (*Server, error) {
+	defCfg := DefaultServerConfig()
 
 	// load tcp server config
 	netCfg := knet.DefaultConfig()
@@ -1244,7 +1245,7 @@ func NewServer(cfg ServerConfig) (*Server, error) {
 	netCfg.MaxConnSize = cfg.MaxConnSize
 	netCfg.MaxPackageSize = cfg.MaxPackageSize
 	netCfg.MaxWorkerTaskSize = cfg.MaxWorkerTaskSize
-	//netCfg.HeartRateInSecond = cfg.HeartRateInSecond
+	netCfg.HeartRateInSecond = defCfg.HeartRateInSecond
 	netCfg.HeartFreshLevel = cfg.HeartFreshLevel
 
 	netServer := knet.NewServer(netCfg)
@@ -1255,7 +1256,7 @@ func NewServer(cfg ServerConfig) (*Server, error) {
 	dbCfg.MaxKeySize = cfg.MaxKeySize
 	dbCfg.MaxValueSize = cfg.MaxKeySize
 	dbCfg.MaxFileSize = cfg.MaxFileSize
-	//dbCfg.MergeInterval = cfg.MergeInterval
+	dbCfg.MergeInterval = defCfg.MergeInterval
 	dbCfg.WriteSync = cfg.WriteSync
 	dbServer, err := CaskDB.Open(dbCfg)
 	if err != nil {
