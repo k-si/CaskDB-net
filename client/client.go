@@ -65,7 +65,7 @@ var commands = map[string]int{
 	"ztop":        42,
 }
 
-const HistoryPath = "/tmp/CaskDB-cli"
+const HistoryPath = "/tmp/caskdb-cli"
 
 type Message struct {
 	id     uint32
