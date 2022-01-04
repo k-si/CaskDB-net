@@ -22,7 +22,7 @@ const (
 	DefaultHost              = "0.0.0.0"
 	DefaultPort              = 4519
 	DefaultMaxConnSize       = 1
-	DefaultMaxPackageSize    = 1024 * 1024 // 1mb
+	DefaultMaxPackageSize    = 8 * 1024 * 1024 // 8mb
 	DefaultWorkerPoolSize    = 1
 	DefaultMaxWorkerTaskSize = 100
 	DefaultHeartRateInSecond = 30 * time.Second
@@ -31,9 +31,9 @@ const (
 
 	// db
 	DefaultDBDir         = "/tmp/CaskDB"
-	DefaultMaxKeySize    = 1 * 1024        // 1kb
-	DefaultMaxValueSize  = 8 * 1024        // 8kb
-	DefaultMaxFileSize   = 1 * 1024 * 1024 // 1mb
+	DefaultMaxKeySize    = 1 * 1024 * 1024  // 1mb
+	DefaultMaxValueSize  = 8 * 1024 * 1024  // 8mb
+	DefaultMaxFileSize   = 32 * 1024 * 1024 // 1mb
 	DefaultMergeInterval = 24 * time.Hour
 	DefaultWriteSync     = false
 )
@@ -79,12 +79,12 @@ func DefaultServerConfig() ServerConfig {
 		HeartFreshLevel:   DefaultHeartFreshLevel,
 		HeartPackageId:    DefaultHeartPackageId,
 		// db
-		DBDir:        DefaultDBDir,
-		MaxKeySize:   DefaultMaxKeySize,
-		MaxValueSize: DefaultMaxValueSize,
-		MaxFileSize:  DefaultMaxFileSize,
+		DBDir:         DefaultDBDir,
+		MaxKeySize:    DefaultMaxKeySize,
+		MaxValueSize:  DefaultMaxValueSize,
+		MaxFileSize:   DefaultMaxFileSize,
 		MergeInterval: DefaultMergeInterval,
-		WriteSync: DefaultWriteSync,
+		WriteSync:     DefaultWriteSync,
 	}
 }
 
