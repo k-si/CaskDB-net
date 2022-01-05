@@ -34,7 +34,7 @@ const (
 	DefaultMaxKeySize    = 1 * 1024 * 1024  // 1mb
 	DefaultMaxValueSize  = 4 * 1024 * 1024  // 8mb
 	DefaultMaxFileSize   = 16 * 1024 * 1024 // 16mb
-	DefaultMergeInterval = 24 * time.Minute
+	DefaultMergeInterval = 24 * time.Hour
 	DefaultWriteSync     = false
 )
 
