@@ -965,7 +965,6 @@ func (zar *ZAddRouter) Handle(req kiface.IRequest) {
 	c := parseCommand(string(req.GetMsg().GetMsgData()))
 
 	score, _ := strconv.ParseFloat(string(c[1]), 64)
-	log.Println(score)
 
 	err := s.dbServer.ZAdd(c[0], score, c[2])
 	if err != nil {
